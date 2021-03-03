@@ -1,75 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <!-- Tab Title -->
-<title>Dajan Lyttle</title>
-
+<!-- Tab Title -->
+    <title>Dajan Lyttle</title>
 <!-- Tab Image -->
-<link rel = "icon" href = "AV Logo (White).png" type = "image/x-icon"> 
-
+    <link rel = "icon" href = "AV Logo (White).png" type = "image/x-icon"> 
 <!-- Style -->
-<link rel="stylesheet" href="styles.css">
-
-
+    <link rel="stylesheet" href="styles.css">
 </head>
+
+<!-- Used to mark top of page-->
+<div id="Top"></div>
 
 <div class="Wrapper">
 
 <div class="Header">
-
 <header>
-
     <div class="HeaderButtons">
         <!-- Header Navigation Buttons -->
-        <button type="button HomeButton" onclick="document.location='index.html'">Home</button>
-        <button type="button AboutButton" onclick="document.location='#About'">About</button>
-        <button type="button ProjectsButton" onclick="document.location='#Projects'">Projects</button>
-        <button type="button ResumeButton" onclick="document.location='#Resume'">Resume</button>
+        <button class="Header" onclick="document.location='#Top'">Home</button>
+        <button class="Header" onclick="document.location='#About'">About</button>
+        <button class="Header" onclick="document.location='#Projects'">Projects</button>
+        <button class="Header" onclick="document.location='#Resume'">Resume</button>
+        <button class="Header" onclick="document.location='#Contact'">Contact</button>
     </div>
-
 </header>
-
-
 </div>
 
 <body>
 
 <div class="Content">
 
-    <div class="Section">
-        <h1>Home</h1>
-
-        <p> A cruise ship (left) and freight ship (center) in Montego Bay Cruise Port in Montego Bay, Jamaica </p>
-        <p> Photo taken by Dajan Lyttle on December 29, 2019 </p>
-    </div>
-
     <div class="Section" id="About">
         <h1>About Me</h1>
+        <p> My name is Dajan Lyttle and I am a student at the University of Washington Tacoma.
+            I am pursuing a B.S. in Electrical Engineering
+
+
+        </p>
     </div>
 
     <div class="Section" id="Projects">
         <h1>Projects</h1>
-
-        <p> A collection of projects I have been part of </p>
-
-        <h2> In Progress</h2>
-        <p><a onclick="document.location='GalaxyBasketball.html'">Custom Basketball League & Simulator</a></p>
-        <p><a onclick="document.location='Random Number Generator.html'">Random Number Generator</a></p>
-
-        <h2> Planned</h2>
-        <p>  Online Calculator</p>
+            <p><a href="random-number-generator.html" target="_blank">Random Number Generator</a></p>
     </div>
 
     <div class="Section" id="Resume">
         <h1>Resume</h1>
     </div>
 
-    <div class="Section">
+    <div class="Section" id="Contact">
         <h1>Contact</h1>
-
-        <p> <a href=mailto:lyttdaj20@gmail.com>Email: lyttdaj20@gmail.com</a> </p>
-        <p>  <a href=https://www.linkedin.com/in/dajanklyttle/ target="_blank">LinkedIn: Dajan Lyttle</a> </p>
+            <p> <a href=mailto:dajanklyttle@gmail.com>Email: dajanklyttle@gmail.com</a> </p>
+            <p> <a href=https://www.linkedin.com/in/dajanklyttle/ target="_blank">LinkedIn</a> </p>
     </div>
 
 </div>
@@ -81,16 +64,9 @@
 </body>
 
 <!-- Footer -->
-<footer>   
-    <!-- Email Link -->
-    <a href="mailto:lyttdaj20@gmail.com"> <img class="Footer" src="Icon Email.png" 
-        title="Email Me" </a> 
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/dajanklyttle/" target="_blank"> <img class="Footer" src="Icon LinkedIn.png"
-        title="Connect with Me on LinkedIn"</a> 
-    <br>
-    <p>Photo Credit</p>
-</footer>
+<div>   
+    <iframe src="Footer.html" title="Footer" class="Footer"></iframe> 
+</div>
 </div>
 
 </html>

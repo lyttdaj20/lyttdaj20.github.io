@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Tab Title -->
+    <title>Random Number Generator</title>
+
+    <!-- Tab Image -->
+    <link rel = "icon" href = "/Icons/AV Logo (White).png" type = "image/x-icon"> 
+
+<!-- Style -->
+<style>
+    body {
+        margin: 0%;
+        padding: 15px;
+    }
+    
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0%;
+
+        background-color: gray;
+
+        text-align: center;
+    }
+</style>
+        
+</head>
+
+
+
+<header>
+<div class="Header">
+
+</div>
+</header>
+
+
+
+<body>
+<h1>Random Number Generator</h1>
+<!-- Inputs for the Random Number Genrator-->
+    <p>Minimum:</p>
+    <input type="number" id="Minimum" name="Minimum" required placeholder="Lowest Possible Value"><br>
+
+    <p>Maximum:</p>
+    <input type="number" id="Maximum" name="Maximum" required placeholder="Highest Possible Value"><br>
+
+    <p>Quantity:</p>
+    <input type="number" id="Quantity" name="Quantity" required placeholder="Number of Values"><br><br>
+
+    <p style="color:red"> Warning: Generating an extremely large quantity of values may cause the site to crash</p>
+
+    <button onclick="RunRNG()" class="popup">Generate</button>
+
+
+
+    <p id="Output"></p>
+</body>
+
+<footer class="footer">   
+    <p>Created by <a href="https://lyttdaj20.github.io" target="_blank">Dajan Lyttle</a> on November 28, 2020</p>
+     
+</footer>
+
+<script>
+    function RunRNG() {
+    var JMimimum = document.getElementById("Minimum").value;
+    var JMaximum = document.getElementById("Maximum").value;
+    var JQuantity = document.getElementById("Quantity").value;
+
+    var JOutput = "";
+
+    //Test if Values are Valid
+    var JValid = true;
+
+    if (JMaximum < JMimimum) {
+        JValid = false; 
+        JOutput = "Maximum value must be larger than minimum value";}
+    else if (JQuantity <= 0) {
+        JValid = false; 
+        JOutput = "Number of values must be a positive integer";} 
+
+    
+
+    //Adds Random Numbers to Output string
+    if (JValid == true) {
+        JOutput += generateRandomNumber(JMimimum, JMaximum);
+        for (i = 0; i < JQuantity - 1; i++) {
+            JOutput += " " + generateRandomNumber(JMimimum, JMaximum);
+        }
+    }
+
+    
+    //Updates Number string
+    document.getElementById("Output").innerHTML = JOutput;
+
+    }
+
+    //Generates Random Number within Bounds
+    function generateRandomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+</script>
+
+</html>
