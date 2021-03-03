@@ -183,6 +183,8 @@
             vertical-align: middle;
             list-style: none;
             padding: 5px;
+                
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         iframe.Footer {
