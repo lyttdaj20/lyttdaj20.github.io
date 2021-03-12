@@ -26,6 +26,64 @@
 
         text-align: center;
     }
+
+    /* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 100%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
 </style>
         
 </head>
@@ -40,21 +98,23 @@
 
 
 
-<body>
+<body onload="showPopup()">
 <h1>Random Number Generator</h1>
 <!-- Inputs for the Random Number Genrator-->
-    <p>Minimum:</p>
-    <input type="number" id="Minimum" name="Minimum" required placeholder="Lowest Possible Value"><br>
+    <label>Minimum:</label><br>
+    <input type="number" id="Minimum" name="Minimum" required="true" oninput="error()"><br><br>
 
-    <p>Maximum:</p>
-    <input type="number" id="Maximum" name="Maximum" required placeholder="Highest Possible Value"><br>
+    <label>Maximum:</label><br>
+    <input type="number" id="Maximum" name="Maximum" required="true" oninput="error()"><br><br>
 
-    <p>Quantity:</p>
-    <input type="number" id="Quantity" name="Quantity" required placeholder="Number of Values"><br><br>
+    <label>Quantity:</label><br>
+    <input type="number" id="Quantity" name="Quantity" required="true" oninput="error()"><br>
+    <p><br></p>
+    <p><br></p>   
 
-    <p style="color:red"> Warning: Generating an extremely large quantity of values may cause the site to crash</p>
-
-    <button onclick="RunRNG()" class="popup">Generate</button>
+    <button onclick="RunRNG()" class="popup">Generate
+    <span class="popuptext" id="myPopup"><p id=Error></p> </span>
+    </button>
 
 
 
@@ -62,49 +122,89 @@
 </body>
 
 <footer class="footer">   
-    <p>Created by <a href="https://lyttdaj20.github.io" target="_blank">Dajan Lyttle</a> on November 28, 2020</p>
+    <p>Created by <a href="index.html" target="_blank">Dajan Lyttle</a> on November 28, 2020 <br>
+        Last Updated March 11, 2021
+    </p>
      
 </footer>
 
 <script>
-    function RunRNG() {
-    var JMimimum = document.getElementById("Minimum").value;
-    var JMaximum = document.getElementById("Maximum").value;
-    var JQuantity = document.getElementById("Quantity").value;
 
-    var JOutput = "";
+    function showPopup() {
+        var popup = document.getElementById("myPopup");
+        popup.style.visibility = "hidden";
+        popup.classList.toggle("show");
+    }
 
-    //Test if Values are Valid
-    var JValid = true;
+    function error() {
+        var Mimimum = document.getElementById("Minimum").value;
+        var Maximum = document.getElementById("Maximum").value;
+        var Quantity = document.getElementById("Quantity").value;
+        
 
-    if (JMaximum < JMimimum) {
-        JValid = false; 
-        JOutput = "Maximum value must be larger than minimum value";}
-    else if (JQuantity <= 0) {
-        JValid = false; 
-        JOutput = "Number of values must be a positive integer";} 
+        var Valid = true;
+        var Error = "";
 
-    
-
-    //Adds Random Numbers to Output string
-    if (JValid == true) {
-        JOutput += generateRandomNumber(JMimimum, JMaximum);
-        for (i = 0; i < JQuantity - 1; i++) {
-            JOutput += " " + generateRandomNumber(JMimimum, JMaximum);
+        if (Maximum < Mimimum) {
+            Valid = false; 
+            Error = "Maximum value must be larger than minimum value";
         }
+        else if (Quantity <= 0) {
+            Valid = false; 
+            Error = "Number of values must be a positive integer";
+        }
+        else if (Quantity > 5000) { 
+            Valid = false;
+            Error = "Extremely large quantities may cause the site to crash";
+        }
+
+
+        document.getElementById("Error").innerHTML = Error;
+
+        var popup = document.getElementById("myPopup");
+        if (Valid == false) {
+            
+            
+            //popup.classList.toggle("show");
+
+            popup.style.visibility = "visible";
+        }
+        else {
+            popup.style.visibility = "hidden";
+        }
+        
     }
 
-    
-    //Updates Number string
-    document.getElementById("Output").innerHTML = JOutput;
+    function RunRNG() {
+        var Mimimum = document.getElementById("Minimum").value;
+        var Maximum = document.getElementById("Maximum").value;
+        var Quantity = document.getElementById("Quantity").value;
+
+        var Output = "";
+        //Test if Values are Valid
+        var Valid = true;
+
+        if (Maximum < Mimimum) {Valid = false;}
+        else if (Quantity <= 0) {Valid = false;} 
+
+        //Adds Random Numbers to Output string
+        if (Valid == true) {
+            Output += generateRandomNumber(Mimimum, Maximum);
+            for (i = 0; i < Quantity - 1; i++) {
+                Output += " " + generateRandomNumber(Mimimum, Maximum);
+            }
+        }
+        
+        //Updates Number string
+        document.getElementById("Output").innerHTML = Output;
 
     }
 
-    //Generates Random Number within Bounds
+   //Generates Random Number within Bounds
     function generateRandomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 </script>
 
