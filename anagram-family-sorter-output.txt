@@ -1,0 +1,25 @@
+Top 5 Largest Families:
+aceprs (7)
+ spacer, scrape, recaps, parsec, pacers, escarp, capers
+acerst (7)
+ traces, recast, reacts, crates, caters, caster, carets
+aeprs (7)
+ spear, spare, reaps, rapes, pears, parse, pares
+adeegnr (6)
+ grenade, grandee, enraged, engarde, derange, angered
+adeprs (6)
+ spread, spared, rasped, parsed, padres, drapes
+
+Families of 6:
+adeegnr (6)
+ grenade, grandee, enraged, engarde, derange, angered
+adeprs (6)
+ spread, spared, rasped, parsed, padres, drapes
+aelpst (6)
+ staple, pleats, plates, petals, pastel, palest
+opst (6)
+ tops, stop, spot, pots, post, opts
+
+Last Family:
+ttuu (1)
+ tutu
