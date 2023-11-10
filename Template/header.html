@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Tab Title -->
+        <title>Header</title>
+        <!-- Style -->
+        <style>
+
+            /*Header */
+            header {
+                width:100%;
+                display: block;
+                overflow: auto;
+                text-align: center;
+
+                /*align-self: center;*/
+
+                padding: 5px;
+                border-bottom: 0;
+                margin: 0;
+
+                background-color: black;
+                align-content: center;
+            }
+
+            div.HeaderButtons {
+                align-content: center;
+                text-align: center;
+
+                margin: 0;
+                
+                overflow: auto;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background-color: black;
+            }
+
+            /* Header Button */
+            button {
+                border: none;
+                background-color: rgba(0, 0, 0, 1);
+                padding: 16px 32px;
+        
+                text-align: center;
+                color: white;
+                text-decoration: none;
+                font-size: 20px;
+                font-family: verdana;
+        
+                display: inline-block;
+                margin: 0px 0px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+        
+            /* Header Button (hovered) */
+            button:hover {
+                background-color: white;
+                color: black;
+            }
+
+
+        </style>
+
+
+    </head>
+
+
+    <!-- Header -->
+    <header>  
+        <div class="HeaderButtons">
+            <!-- Header Navigation Buttons -->
+            <button class="Header" onclick="document.location='/index.html'">Home</button>
+            <button class="Header" onclick="document.location='/about.html'">About</button>
+            <button class="Header" onclick="document.location='/projects.html'">Projects</button>
+            <button class="Header" onclick="document.location='/resume.html'">Resume</button>
+            <button class="Header" onclick="document.location='/contact.html'">Contact</button>
+        </div>
+    </header>
+</html>

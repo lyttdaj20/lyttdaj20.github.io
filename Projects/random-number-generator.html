@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Tab Title -->
+    <title>Random Number Generator</title>
+
+    <!-- Tab Image -->
+    <link rel = "icon" href = "/Icons/AV Logo (White).png" type = "image/x-icon"> 
+
+<!-- Style -->
+<style>
+    body {
+        margin: 0%;
+        padding: 15px;
+    }
+
+    .body .dark{
+
+        background-position: black;
+        color: white;
+    }
+    
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0%;
+
+        background-color: gray;
+
+        text-align: center;
+    }
+
+    /* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 100%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+</style>
+        
+</head>
+
+
+
+<header>
+<div class="Header">
+
+</div>
+</header>
+
+
+
+<body onload="showPopup()" class="body">
+<h1>Random Number Generator</h1>
+<!-- Inputs for the Random Number Genrator-->
+    <label>Minimum:</label><br>
+    <input type="number" id="Minimum" name="Minimum" required="true" oninput="error()"><br><br>
+
+    <label>Maximum:</label><br>
+    <input type="number" id="Maximum" name="Maximum" required="true" oninput="error()"><br><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" id="Quantity" name="Quantity" required="true" oninput="error()"><br>
+    <p><br></p>
+    <p><br></p>   
+
+    <button onclick="RunRNG()" class="popup">Generate
+    <span class="popuptext" id="myPopup"><p id=Error></p> </span>
+    </button>
+
+    <button onclick="dark()">Dark Mode</button>
+
+    <p id="Output"></p>
+</body>
+
+<footer class="footer">   
+    <p>Created by <a href="index.html" target="_blank">Dajan Lyttle</a> on November 28, 2020 <br>
+        Last Updated March 11, 2021
+    </p>
+     
+</footer>
+
+<script>
+
+    //Switches between ligth and dark mode
+    function dark() {
+
+        var body = document.getElementById("body");
+        body.classList.toggle("dark");
+    }
+
+    function showPopup() {
+        var popup = document.getElementById("myPopup");
+        popup.style.visibility = "hidden";
+        popup.classList.toggle("show");
+    }
+
+    function error() {
+        var Mimimum = document.getElementById("Minimum").value;
+        var Maximum = document.getElementById("Maximum").value;
+        var Quantity = document.getElementById("Quantity").value;
+        
+
+        var Valid = true;
+        var Error = "";
+
+        if (Maximum < Mimimum) {
+            Valid = false; 
+            Error = "Maximum value must be larger than minimum value";
+        }
+        else if (Quantity <= 0) {
+            Valid = false; 
+            Error = "Number of values must be a positive integer";
+        }
+        else if (Quantity > 5000) { 
+            Valid = false;
+            Error = "Extremely large quantities may cause the site to crash";
+        }
+
+
+        document.getElementById("Error").innerHTML = Error;
+
+        var popup = document.getElementById("myPopup");
+        if (Valid == false) {
+            
+            
+            //popup.classList.toggle("show");
+
+            popup.style.visibility = "visible";
+        }
+        else {
+            popup.style.visibility = "hidden";
+        }
+        
+    }
+
+    function RunRNG() {
+        var Mimimum = document.getElementById("Minimum").value;
+        var Maximum = document.getElementById("Maximum").value;
+        var Quantity = document.getElementById("Quantity").value;
+
+        var Output = "";
+        //Test if Values are Valid
+        var Valid = true;
+
+        if (Maximum < Mimimum) {Valid = false;}
+        else if (Quantity <= 0) {Valid = false;} 
+
+        //Adds Random Numbers to Output string
+        if (Valid == true) {
+            Output += generateRandomNumber(Mimimum, Maximum);
+            for (i = 0; i < Quantity - 1; i++) {
+                Output += " " + generateRandomNumber(Mimimum, Maximum);
+            }
+        }
+        
+        //Updates Number string
+        document.getElementById("Output").innerHTML = Output;
+
+    }
+
+   //Generates Random Number within Bounds
+    function generateRandomNumber(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+</script>
+
+</html>

@@ -1,0 +1,130 @@
+
+        .TitleDiv {
+            position: -webkit-sticky;
+            position: sticky;
+            
+            background-color: rgba(255, 255, 255, 0.167);
+            padding-top: 1px;
+            padding-left: 1px;
+            margin-bottom: 0px;
+    
+            color: white;
+            font-family: verdana;
+            
+        }
+
+
+
+        /*Div for the Body (Between header and footer) */
+        div.Wrapper {
+            min-height: 100%;          
+
+            padding-bottom: 0px;
+            border-bottom: 0px;
+            margin-bottom: 0px;
+
+            background-image: url('Montego\ Bay\ Harbor\ Night.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        div.Content {
+            background-color: rgba(102, 102, 102, 0.35);
+            margin-left: 35px;
+            margin-right: 35px;
+            margin-bottom: 0;            
+
+            color: white;
+            font-family: verdana;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            padding-left: 0%;
+            padding-right: 0%;
+            line-height: 1.5;
+            text-indent: 1px;
+        }
+        /*Div for each section */
+        div.Section {
+            background-color: rgba(102, 102, 102, 0.25);    
+
+            margin-left: 35px;
+            margin-right: 35px;
+            margin-top: 0px;
+            margin-bottom: 35px;
+
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2.5%;
+            padding-bottom: 2.5%;
+
+        }
+
+
+        body {    
+            margin: 0;
+            padding: 0;
+            border: 0;
+
+            overflow-x: hidden
+        }
+        
+        /*Paragraph*/
+        p {
+            color: white;
+            font-family: verdana;
+        }
+
+        /*List */
+        ul {
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-left: 0px;
+        }
+    
+        /*Link by default */
+        a {
+            color: rgb(43, 156, 226);
+            text-decoration:none;
+        }
+
+        /*Link when hovered */
+        a:hover {
+            color: rgb(0, 155, 255);
+            cursor:pointer;
+            text-decoration: underline;
+        }
+        
+    
+        /* Tables */
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+
+          }
+
+          th, td {
+            padding: 15 px;
+          }
+
+          /*Center element in div*/
+          .center {
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          /* Images */
+          img.Body {
+            
+            display: block;
+            margin: auto;
+            border: 5px solid grey;
+          }
+
+          figcaption {
+            text-align: center;
+            font-style: italic; 
+          }
+
+
+
+    
